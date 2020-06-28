@@ -1,5 +1,13 @@
 import json
 
+
+slime = {
+    "이름" : "야생의 슬라임",
+    "체력" : 20,
+    "기본공격" : "몸통박치기",
+    "스킬" : "산성액 뿌리기"
+}
+
 # def set_charact(name):
 def set_charact(name):
     character = {
@@ -17,6 +25,13 @@ def set_charact(name):
     # print("{0}님 반갑습니다." .format(character["닉네임"]))
     return character
 
+def save_game2(filename, charact):
+    f = open(filename, "w", encoding='utf-8')
+    for key in charact:
+        print("%s:%s" % (key, slime[key]))
+        f.write("%s:%s\n" % (key, slime[key]))
+    f.close()
+
 def save_game(filename, charact):
     f = open(filename, "w", encoding='utf-8')
     for key in charact:
@@ -25,12 +40,13 @@ def save_game(filename, charact):
     f.close() 
 
 name = input("사용하실 닉네임을 입력해 주세요: ")
-print(name, "이(가) 닉네임으로 설정 되었습니다.")
+# print(name, "이(가) 닉네임으로 설정 되었습니다.")
 
 # ##캐릭터 설정 함수
 character = set_charact(name)
 
-print(character)
+# print(character)
 
 ##캐릭터 정보 파일에 저장
-save_game("save.txt",character)
+save_game("static/save.txt",character)
+save_game2("static/save1.txt", slime)

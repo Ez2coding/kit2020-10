@@ -26,6 +26,8 @@ def hellovar(name):
     character = game.set_charact(name)
     return render_template("gamestart.html", data = character )
 
+
+
 @app.route('/gamestart')
 def gamestart():
     with open("static/save.txt", "r", encoding='utf-8') as f:
@@ -34,18 +36,38 @@ def gamestart():
         print(character["AA"])
     return "{}이 {}를 사용해서 이겼다." .format(character["닉네임"], [character["AA"]]) 
 
+@app.route('/gamestart2')
+def gamestart2():
+    return render_template("gamestart2.html")
 
+@app.route('/gamestart3')
+def gamestart3(name):
+    character = game.set_charact(name)
+    return render_template("gamestart.html")
+
+@app.route('/gamestart2/<int:num>')
+def gamestart2_num(num):
+    if num ==1:
+        
+        return render_template("gamestart3.html")
+    if num ==2:
+        return "그래 내 주제에 무슨 모험가야 돌아가서 부모님 농사나 돕자."  
 
 @app.route('/input/<int:num>')    
 def input_num(num):
     if num == 1:
-        with open("static/save.txt", "r", encoding='utf-8') as f:
-            data = f.read()
-            character = json.loads(data)
-            print(character["스킬"])
-        return "{}이 {}를 사용해서 이겼다." .format(character["닉네임"], [character["AA"]][0]) 
+        # with open("static/save1.txt", "r", encoding='utf-8')as f:
+        #     data = f.read()
+        #     slime =json.loads(data)
+            # print(slime[3])
+        # with open("static/save.txt", "r", encoding='utf-8') as f:
+        #     data = f.read()
+        #     character = json.loads(data)
+        #     print(character["AA"])
+        return render_template("gamestart2.html")          
+        # return "{}이 {}를 사용해서 이겼다." .format(character["닉네임"], [character["AA"]][0]) 
     elif num == 2:        
-        return "도망갔다"
+        return "그래 내 주제에 무슨 모험가야 돌아가서 부모님 농사나 돕자."
     elif num ==3:
         name = '퉁퉁이'
     else:

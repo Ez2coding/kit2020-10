@@ -3,7 +3,7 @@ import time,random
 
 
 
-def charact(name,weapons,Amor,Dmg,Def):
+def charact(name,Weapons,Amor,Dmg,Def):
     status = {
         "닉네임" : name,
         "체력" : 100,
@@ -35,7 +35,7 @@ def game():
 
 
     
-# name = input("사용하실 닉네임을 입력해 주세요: ")
+name = input("사용하실 닉네임을 입력해 주세요: ")
 # dictionary["닉네임"] = name
 # print(name, "이(가) 닉네임으로 설정 되었습니다.") 
 
@@ -165,7 +165,7 @@ def choiceA():
         print("잘못입력하셨습니다. 다시 확인해주세요")     
 choiceA()
 
-print(charact(name,weapons,Amor,Dmg,Def))
+print(charact(name,Weapons,Amor,Dmg,Def))
 
 
 
